@@ -1,0 +1,41 @@
+server:  
+  port: ${PORT:8060}
+
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8070}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true
+    
+management:
+  security:
+    enabled: false
+    
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+    bus:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          zkNodes: localhost
+          defaultZkPort: 2181
+          brokers: localhost
+          defaultBrokerPort: 9092
+  kafka:
+      bootstrap-servers:
+      - localhost:9092
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
