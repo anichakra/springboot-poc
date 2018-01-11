@@ -13,6 +13,7 @@ import java.util.Spliterators.AbstractSpliterator;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -22,6 +23,9 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class KafkaConsumerListner {
 
+	@Autowired
+	private RestTemplate template;
+	
 	@KafkaListener(topics = "filePath", group = "group-someFeed")
 	public void kafkaListner(String filePath) {
 		try {
@@ -33,9 +37,9 @@ public class KafkaConsumerListner {
 	}
 
 	void sendRequest(List<String> each) {
-		RestTemplate template = new RestTemplate();
+		
 		HttpEntity<List<String>> jsonDataRequest = new HttpEntity<>(each);
-		ResponseEntity<String> response = template.postForEntity("http://localhost:8080/api/somefeed/processSomeFeedData", jsonDataRequest,
+		ResponseEntity<String> response = template.postForEntity("http://somefeed/processSomeFeedData", jsonDataRequest,
 				String.class);
 		System.out.println("Response is " + response);
 	}
