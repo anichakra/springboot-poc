@@ -1,0 +1,31 @@
+server:  
+  port: ${PORT:8055}
+
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8070}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres 
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+       

@@ -99,12 +99,16 @@ public class SomeFeedController {
 		HttpEntity<List<String>> rawDataRequest = new HttpEntity<>(rawData);
 		ResponseEntity<String> jsonResponse = template.postForEntity("http://file-processing/processRawSomeFeedData",
 				rawDataRequest, String.class);
-		System.out.println(jsonResponse.getBody());
 		HttpEntity<String> jsonDataRequest = new HttpEntity<>(jsonResponse.getBody());
-		ResponseEntity<SomeFeedModel[]> modelResponse = template
-				.postForEntity("http://file-processing/processSomefeedJsonData", jsonDataRequest, SomeFeedModel[].class);
+		ResponseEntity<SomeFeedModel[]> modelResponse = template.postForEntity(
+				"http://file-processing/processSomefeedJsonData", jsonDataRequest, SomeFeedModel[].class);
 		List<SomeFeedModel> modelList = Arrays.asList(modelResponse.getBody());
 		// TODO : Spring data rest call here with input as modelList
+
+		HttpEntity<List<SomeFeedModel>> dataRequest = new HttpEntity<>(modelList);
+		ResponseEntity<String> response = template.postForEntity(
+				"http://dataprocessing/someFeedDataProcessing", dataRequest, String.class);
+
 		return "success";
 	}
 

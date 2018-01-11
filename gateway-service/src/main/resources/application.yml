@@ -25,6 +25,9 @@ zuul:
     kafkaproducer: 
       path: /kafka-producer/**
       serviceId: kafka-producer
+    dataprocessing:
+      path: /dataprocessing/**
+      serviceId: dataprocessing 
 
 eureka:
   client:
