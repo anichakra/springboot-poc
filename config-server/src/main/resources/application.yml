@@ -1,23 +1,15 @@
 server:
   port: 8280
+
+
 spring:
   cloud:
-    config:
-      server:
-        git:
-          uri: ${GIT_URL}
-          username: ${GIT_USER}
-          password: ${GIT_PASSWORD}
-          default-label : master
     bus:
       enabled: true
     stream:
       kafka:
         binder:
-          zkNodes: ${ZK_HOST:localhost}
-          defaultZkPort: 2181
-          brokers: ${KAFKA_HOST:localhost}
-          defaultBrokerPort: 9092
+          brokers: kafka
+          zkNodes: zookeeper
   kafka:
-    bootstrap-servers:
-    - ${KAFKA_HOST:localhost}:9092
+    bootstrap-servers: kafka:9092
