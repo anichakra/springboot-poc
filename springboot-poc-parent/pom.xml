@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>me.anichakra.poc.springboot</groupId>
 	<artifactId>springboot-poc-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1.BUILD-SNAPSHOT</version>
 	<name>springboot-poc-parent</name>
 	<packaging>pom</packaging>
 	<description>Spring Boot Parent POM</description>
@@ -23,6 +23,13 @@
 				<groupId>io.spring.platform</groupId>
 				<artifactId>platform-bom</artifactId>
 				<version>Brussels-SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Edgware.SR1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

@@ -10,9 +10,10 @@
 	<parent>
 		<groupId>me.anichakra.poc.springboot</groupId>
 		<artifactId>springboot-poc-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../springboot-poc-parent/pom.xml</relativePath>
+		<version>0.0.1.BUILD-SNAPSHOT</version>
+		<relativePath>../springboot-poc-parent</relativePath>
 	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
