@@ -8,7 +8,7 @@
 	<description>Config Service</description>
 
 	<parent>
-		<groupId>me.anichakra</groupId>
+		<groupId>me.anichakra.poc.springboot</groupId>
 		<artifactId>springboot-poc-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../springboot-poc-parent/pom.xml</relativePath>
