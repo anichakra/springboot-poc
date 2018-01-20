@@ -7,13 +7,12 @@
 	<name>springboot-poc</name>
 	<packaging>pom</packaging>
 	<description>Spring Boot Module POM</description>
-
 	<modules>
-	    <module>springboot-poc-parent</module>
+		<module>springboot-poc-parent</module>
 		<module>discovery-service</module>
 		<module>gateway-service</module>
-	    <module>config-service</module>
-	    <module>some-app-service</module>    
+		<module>config-service</module>
+		<module>some-app-service</module>
 	</modules>
 
 </project>

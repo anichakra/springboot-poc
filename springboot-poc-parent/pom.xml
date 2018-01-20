@@ -82,7 +82,6 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
-					<skipDockerBuild>true</skipDockerBuild>
 				</configuration>
 			</plugin>
 		</plugins>
