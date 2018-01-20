@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>dataprocessing</artifactId>
+	<artifactId>some-app-service</artifactId>
 	<packaging>jar</packaging>
-	<name>dataprocessing</name>
-	<description>Demo project for Spring Boot</description>
+	<name>some-app-service</name>
+	<description>Some App Service</description>
 
 	<parent>
-		<groupId>com.anycompany</groupId>
-		<artifactId>api-parent</artifactId>
+		<groupId>me.anichakra</groupId>
+		<artifactId>springboot-poc-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -57,40 +57,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>			
 		</dependency>
-		<!-- Swagger Dependency : start -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger-version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger-version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<!-- Swagger Dependency : end -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.6.0</version>
-		</dependency>
+		
 	</dependencies>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 </project>

@@ -1,67 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.anycompany</groupId>
-	<artifactId>api-parent</artifactId>
+	<groupId>me.anichakra</groupId>
+	<artifactId>springboot-poc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Api-Parent</name>
+	<name>springboot-poc</name>
 	<packaging>pom</packaging>
-	<description>API Parent Project</description>
+	<description>Spring Boot Module POM</description>
 
+	<modules>
+	    <module>springboot-poc-parent</module>
+		<module>discovery-service</module>
+		<module>gateway-service</module>
+	    <module>config-service</module>
+	    <module>tracing-service</module>
+	    <module>some-app-service</module>    
+	</modules>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.9.RELEASE</version>
-	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
-		<swagger-version>2.6.1</swagger-version>
-		<docker.image.prefix>anichakra</docker.image.prefix>
-	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<!--  added for docker image build from the base-image -->
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>1.0.0</version>
-				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<baseImage>openjdk:8-jdk-alpine</baseImage>
-					<entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar", "/${project.build.finalName}.jar"]</entryPoint>
-					<!-- copy the service's jar file from target into the root directory 
-						of the image -->
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>

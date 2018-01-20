@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.anycompany</groupId>
-	<artifactId>api-parent</artifactId>
+	<groupId>me.anichakra</groupId>
+	<artifactId>springboot-poc-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Api-Parent</name>
+	<name>springboot-poc-parent</name>
 	<packaging>pom</packaging>
-	<description>API Parent Project</description>
+	<description>Spring Boot Parent POM</description>
 
 
 	<parent>
@@ -35,14 +35,33 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+	<dependencies>
+		<!-- Swagger Dependency : start -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Swagger Dependency : end -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!--  added for docker image build from the base-image -->
+			<!-- added for docker image build from the base-image -->
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
@@ -50,7 +69,8 @@
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<baseImage>openjdk:8-jdk-alpine</baseImage>
-					<entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar", "/${project.build.finalName}.jar"]</entryPoint>
+					<entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar",
+						"/${project.build.finalName}.jar"]</entryPoint>
 					<!-- copy the service's jar file from target into the root directory 
 						of the image -->
 					<resources>
