@@ -35,7 +35,7 @@ zuul:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery-service:8070/eureka
+      defaultZone: http://discovery-service:8761/eureka
     registerWithEureka: false
 
 

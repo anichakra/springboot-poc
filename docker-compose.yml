@@ -17,7 +17,7 @@ services:
   discovery-service:
     image: anichakra/discovery-service
     ports:
-     - "8070:8070"
+     - "8761:8761"
   
   config-service:
     image: anichakra/config-service
