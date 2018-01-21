@@ -1,6 +1,9 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: gateway-server
+    name: gateway-service
 
 info:
   component: Edge Server
@@ -26,17 +29,15 @@ zuul:
       path: /kafka-producer/**
       serviceId: kafka-producer
     dataprocessing:
-      path: /dataprocessing/**
-      serviceId: dataprocessing 
+      path: /some-app-service/**
+      serviceId: some-app-service 
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER}
+      defaultZone: http://discovery-service:8070/eureka
     registerWithEureka: false
-      
-server:
-  port: 8080
+
 
 logging:
   level:

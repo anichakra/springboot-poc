@@ -1,10 +1,10 @@
 server:  
-  port: ${PORT:8055}
+  port: 8180
 
 eureka:  
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER}
+      defaultZone: http://discovery-service:8070/eureka
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
@@ -16,11 +16,11 @@ ribbon:
 spring:
   cloud:
     config:
-      uri: ${CONFIG_SERVER}
+      uri: http://config-service:8060
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST}:5432/postgres
-    username: postgres 
-    password: admin
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USERNAME} 
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
     platform: postgres
   jpa:

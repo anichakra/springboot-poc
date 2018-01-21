@@ -1,9 +1,17 @@
 server:
-  port: 8280
-
+  port: 8060
 
 spring:
   cloud:
+    config:
+      allow-override: true
+      fail-fast: true
+      server: 
+        git:
+          uri: ${GIT_URI}
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
+          default-label: master
     bus:
       enabled: true
     stream:
