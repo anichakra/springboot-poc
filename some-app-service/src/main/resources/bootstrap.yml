@@ -16,13 +16,11 @@ spring:
     stream:
       kafka:
         binder:
-          zkNodes: ${ZK_HOST:localhost}
-          defaultZkPort: 2181
-          brokers: ${KAFKA_HOST:localhost}
-          defaultBrokerPort: 9092
+          brokers: kafka
+          zkNodes: zookeeper
   kafka:
-      bootstrap-servers:
-      - ${KAFKA_HOST:localhost}:9092
+    bootstrap-servers: kafka:9092
+    
 hystrix:
   command:
     default:
