@@ -46,7 +46,7 @@ services:
     ports:
      - "8180:8180"
     environment:
-      POSTGRES_URL: jdbc:postgresql://ec2-54-221-134-89.compute-1.amazonaws.com:5432/postgres
+      POSTGRES_URL: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres123
       DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
