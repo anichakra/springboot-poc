@@ -4,7 +4,7 @@ server:
 eureka:  
   client:
     serviceUrl:
-      defaultZone: http://discovery-service:8761/eureka
+      defaultZone: ${DISCOVERY_SERVICE_URL}
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
@@ -16,7 +16,7 @@ ribbon:
 spring:
   cloud:
     config:
-      uri: http://config-service:8060
+      uri: ${CONFIG_SERVICE_URL}
   datasource:
     url: ${POSTGRES_URL}
     username: ${POSTGRES_USERNAME} 

@@ -49,4 +49,6 @@ services:
       POSTGRES_URL: jdbc:postgresql://http://ec2-54-221-134-89.compute-1.amazonaws.com:5432/postgres
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres123
+      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
+      CONFIG_SERVICE_URL: http://config-service:8060
       
