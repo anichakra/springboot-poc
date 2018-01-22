@@ -22,7 +22,7 @@ services:
   config-service:
     image: anichakra/config-service
     ports:
-     - "8060:8060"
+     - "8888:8888"
     links:
      - kafka
      - zookeeper
@@ -50,5 +50,5 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres123
       DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
-      CONFIG_SERVICE_URL: http://config-service:8060
+      CONFIG_SERVICE_URL: http://config-service:8888
       

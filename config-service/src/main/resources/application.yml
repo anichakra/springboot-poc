@@ -1,5 +1,17 @@
 server:
-  port: 8060
+  port: 8888
+
+security:
+  user:
+    name: root
+    password: s3cr3t
+
+encrypt:
+  key-store:
+    location: classpath:/config-server.jks
+    password: my-s70r3-s3cr3t
+    alias: config-server-key
+    secret: my-k34-s3cr3t
 
 spring:
   cloud:

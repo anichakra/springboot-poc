@@ -12,11 +12,13 @@ eureka:
 ribbon:
   eureka:
     enabled: true
-
+    
 spring:
   cloud:
     config:
       uri: ${CONFIG_SERVICE_URL}
+      username: root
+      password: s3cr3t
   datasource:
     url: ${POSTGRES_URL}
     username: ${POSTGRES_USERNAME} 
