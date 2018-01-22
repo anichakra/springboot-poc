@@ -16,6 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<springboot.version>1.5.9.RELEASE</springboot.version>
 		<swagger-version>2.6.1</swagger-version>
 		<docker.image.prefix>anichakra</docker.image.prefix>
 	</properties>
@@ -82,6 +83,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${springboot.version}</version>
 
 			</plugin>
 			<!-- added for docker image build from the base-image -->
