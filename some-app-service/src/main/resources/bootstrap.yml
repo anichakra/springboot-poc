@@ -1,4 +1,8 @@
-spring:  
+management:
+  security:
+    enabled: false
+
+spring:
   application:
     name: some-app-service
   logging:
@@ -7,9 +11,21 @@ spring:
     level:
       org.springframework: WARN
       org.hibernate: WARN
-
-management:
-  security:
-    enabled: false
-    
-
+    bus:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          zkNodes: ${ZK_HOST:localhost}
+          defaultZkPort: 2181
+          brokers: ${KAFKA_HOST:localhost}
+          defaultBrokerPort: 9092
+  kafka:
+      bootstrap-servers:
+      - ${KAFKA_HOST:localhost}:9092
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
