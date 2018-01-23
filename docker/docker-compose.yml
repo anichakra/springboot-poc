@@ -43,8 +43,14 @@ services:
     depends_on:
      - discovery-service
      - config-service
+     - gateway-service
     ports:
      - "8180:8180"
+    links:
+     - config-server
+     - discovery-service
+     - kafka
+     - zookeeper
     environment:
       POSTGRES_URL: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
       POSTGRES_USERNAME: postgres
