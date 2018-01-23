@@ -7,7 +7,7 @@ security:
     password: s3cr3t
 
 encrypt:
-  key-store:
+  keyStore:
     location: classpath:/config-server.jks
     password: my-s70r3-s3cr3t
     alias: config-server-key
