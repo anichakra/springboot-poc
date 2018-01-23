@@ -29,7 +29,7 @@ services:
     environment:
       GIT_URI: https://github.com/jass0108/configuration
       GIT_USERNAME: anichakra
-      GIT_PASSWORD: "{cipher}aa" 
+     # GIT_PASSWORD: "{cipher}aa" 
       
   gateway-service:
     image: anichakra/gateway-service
@@ -48,7 +48,7 @@ services:
     environment:
       POSTGRES_URL: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
       POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: "{cipher}aa"
+     # POSTGRES_PASSWORD: "{cipher}aa"
       DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
       CONFIG_SERVICE_URL: http://config-service:8888
       
