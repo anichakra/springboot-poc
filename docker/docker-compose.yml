@@ -37,6 +37,12 @@ services:
      - discovery-service
     ports:
      - "8080:8080"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s  
 
   some-app-service:
     image: anichakra/some-app-service
