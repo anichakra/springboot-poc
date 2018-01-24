@@ -1,3 +1,7 @@
+upload:
+  path: C:/
+  folder: upload
+
 spring:
   datasource:
     url: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
