@@ -7,11 +7,11 @@ security:
     password: s3cr3t
 
 encrypt:
-  key-store:
-    location: classpath:/config-server.jks
-    password: my-s70r3-s3cr3t
-    alias: config-server-key
-    secret: my-k34-s3cr3t
+  keyStore:
+    location: classpath:/server.jks
+    password: s3cr3t
+    alias: springboot-poc-key
+    secret: changeme
 
 spring:
   cloud:
