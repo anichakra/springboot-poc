@@ -1,5 +1,5 @@
 upload:
-  path: C:/
+  path: ~
   folder: upload
 
 spring:
