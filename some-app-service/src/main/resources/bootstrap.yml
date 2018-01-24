@@ -1,6 +1,11 @@
+
+server:  
+  port: 8180
+
 management:
   security:
     enabled: false
+
 
 spring:
   application:
@@ -13,16 +18,16 @@ spring:
       org.hibernate: WARN
     bus:
         enabled: true
-    stream:
-      kafka:
-        binder:
-          brokers: kafka
-          zkNodes: zookeeper
+ #   stream:
+ #     kafka:
+ #       binder:
+ #         brokers: kafka
+ #         zkNodes: zookeeper
   kafka:
     bootstrap-servers: kafka:9092
   cloud:
     config:
-      uri: ${CONFIG_SERVICE_URL}
+      uri: http://ec2-34-236-84-53.compute-1.amazonaws.com:8888
       username: root
       password: s3cr3t
       fail-fast: true
@@ -33,9 +38,7 @@ hystrix:
       execution:
         timeout:
           enabled: false
- 
-server:  
-  port: 8180
+
 
 security:
   user:
