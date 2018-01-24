@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USERNAME} 
+    password: '{cipher}AQAk2nVn5QckLFl0gpqot+9htnwz9eOtGBSRH25AKAhtdYfDYtlBf9+w6vk5nBz9vG4r16InyL3mI/cF2P90QqIGYKs1n+n8TfEZ4JNxhfQCuc3xFdvseMuWaV1GF0NYGlvGxRE9IYSrtAJkkTVF3VlUSp12cHqqxt86nKfP3BmjHUjsX186FkBvSas5Rh3Z/UQucoiGd3923NAVWlLY+peSJMRdSCtLqqlCiZXVEDQOaef3Rtt9s2BiIy06rpRIwqEii3DjsaIX/L4pphMG0KCDCCCBEfWp/YswohczGRKSCLA/0IICEQUXOHGd+clCS6v2VWd8W17rrCq9o5AqwMzUYlqCW9c+A9L/4f0P9z+9SdQ6DcwdmTwjk3dH0B3mtac='
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
