@@ -51,6 +51,12 @@ services:
      - discovery-service
      - kafka
      - zookeeper
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s 
     environment:
       POSTGRES_URL: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
       POSTGRES_USERNAME: postgres
