@@ -31,7 +31,11 @@ spring:
       username: root
       password: s3cr3t
       fail-fast: true
-   
+    stream:
+      kafka:
+        binder:
+          brokers: kafka
+          zkNodes: zookeeper   
 hystrix:
   command:
     default:
