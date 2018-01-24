@@ -35,21 +35,16 @@ services:
     image: anichakra/gateway-service
     depends_on:
      - discovery-service
+    command: ["./wait-for-it.sh", "discovery-service:8761", "--timeout=0"]  
     ports:
      - "8080:8080"
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 15s
-        max_attempts: 3
-        window: 120s  
-
   some-app-service:
     image: anichakra/some-app-service
     depends_on:
      - discovery-service
      - config-service
      - gateway-service
+    command: ["./wait-for-it.sh", "config-server:8888", "--timeout=0"] 
     ports:
      - "8180:8180"
     links:
@@ -57,12 +52,6 @@ services:
      - discovery-service
      - kafka
      - zookeeper
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 15s
-        max_attempts: 3
-        window: 120s 
     environment:
       POSTGRES_URL: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
       POSTGRES_USERNAME: postgres
