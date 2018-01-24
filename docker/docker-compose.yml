@@ -47,7 +47,7 @@ services:
     ports:
      - "8180:8180"
     links:
-     - config-server
+     - config-service
      - discovery-service
      - kafka
      - zookeeper
