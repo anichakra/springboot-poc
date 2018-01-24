@@ -22,7 +22,7 @@ spring:
         git:
           uri: ${GIT_URI}
           username: ${GIT_USERNAME}
-          password: '{cipher}AgAwQa9kL4luCi072f6tMrq7/v7yTYmcgQA22RG1iiC5EHLq6i5VSEph5NYsvXTfxKs4uC+9bxkqHIzO3YG7uuoKFMT6FhD1wJhNX6Ni2o6I366d0OwemedFQkVBQbCs0C8sl6AIx73RusCLgq2GxaZkjzSyfYfXPtOjr1WOvf6G82TBkZG+RsORWW0Ma0I24arL9402IsULLLqx8nVPHkVGk0ZkbK9SOVjEAnNjSkRGQBuo9MlwzFpBpcjxrKmVrsqO7IwELydNHWe19K0g/VGBNmbrs1/tPtASVASN9MCft6pGdNffFkzIE59T3MCisxOMxTTw8QjKxtOZB4p9nsG22oy07Fdxb2JDenS8AckMT6GI7N7UXX8EICf9VXlLmStjh9wo+Gc8bx0wep/YkdoFmg+fHPokVO4c2F5e1nfjka4M2P7twUQcYJxjDbZAZOu9ghQXvCVrCkPzQX+FUA12IqXI+bZcGLW3wlxA91zX2Chg3aAAsUJO+MFD2s81AkdJqVRa6oOVH230tj9jlCouSXbWsUMwTJFCB/Sdct5zlfD3cqP2lYWoNCuQ4Xt5MRyi6zR9ZloGzD5yYnRzWSz/0AoRQO7quxlzru823mkcjKllxqDFujOBNvGherjPq0B+sqV0/fqlviLIPtwMHIFUQwieJ4f0nnxVwSmUxfS+gxzh5xc45jA1PV127pDxrba5659CsHhaRwGWyHhY7DNh'
+          password: '{cipher}AQBv4+Sigz1ghyqbyvf3XQpcqDK3Ff0J7w5kqJUlbxNrvkfUM5Ot+6qQviFl+Z/qBkUKAcMUpR8iLdJWhQrcutbEjGwOZH07ifsqogwTbkWb1Q7GSPLyCuBfLtXJWxgddcztc1x4c7w4xQQVhP1dcIJ5ZJUezMJUaGzLnqpHMxfoGReEkP65f1YZMzZeA79VTleM7MnfX9nF5e4Y/AtiI6f3Vksobxy90ZeSlG+b7FXG+I9zoGk+r7UTD7oRTJdxo+s/UiZbR2TyMiyEjzZn9G58Lih5+/nnI9rR72GvSi1PVZmD54woJvG/heSpcDFGPrxTV6XwGbpuBBZy0nJn4i8niJ9nF+nc7xFVZ5pEsPCVxyFEyqZDil30ckh8VKeBAf4='
           defaultLabel: master
           cloneOnStart: true
           searchPaths: configuration
