@@ -28,5 +28,10 @@ spring:
           cloneOnStart: true
     bus:
       enabled: true
+    stream:
+      kafka:
+        binder:
+          brokers: kafka
+          zkNodes: zookeeper
   kafka:
     bootstrap-servers: kafka:9092
