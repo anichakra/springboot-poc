@@ -1,9 +1,5 @@
 package com.anycompany.someapp.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.anycompany.someapp.model.S3UploadFileModel;
 import com.anycompany.someapp.model.SomeFeed;
 import com.anycompany.someapp.model.SomeFeedModel;
 import com.anycompany.someapp.repository.DataProcessingRepository;
+import com.anycompany.someapp.s3.S3Actions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,11 +45,8 @@ public class DataProcessingController {
 	@Autowired
 	DataProcessingRepository repo;
 
-	@Value("${upload.path}")
-	private String uploadRootPath;
-
-	@Value("${upload.folder}")
-	private String uploadFolder;
+	@Autowired
+	private S3Actions action;
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
@@ -68,24 +62,14 @@ public class DataProcessingController {
 		if (!file.isEmpty()) {
 			byte[] bytes = file.getBytes();
 			String name = file.getOriginalFilename();
-			// Creating the directory to store file
-			String rootPath = uploadRootPath;
-			File dir = new File(new File(rootPath), uploadFolder);
-			if (!dir.exists())
-				dir.mkdirs();
-			// Create the file on server
-			File serverFile = new File(new File(dir.getAbsolutePath()), name);
-			outputFileWriter(bytes, serverFile);
-			LOG.info("Server File Location= " + serverFile.getAbsolutePath());
-			kafkaTemplate.send("filePath", serverFile.getAbsolutePath());
+			S3UploadFileModel uploadRequest = new S3UploadFileModel(name, bytes, null);
+			String result = action.postFileToS3(uploadRequest);
+			LOG.info("File has been uploaded in S3 with result as :" + result);
+			
+			// pushing filename to kafka
+			kafkaTemplate.send("fileName", name);
 		}
 		return Collections.singletonMap("Response", "Success");
-	}
-
-	private void outputFileWriter(byte[] bytes, File serverFile) throws FileNotFoundException, IOException {
-		try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
-			stream.write(bytes);
-		}
 	}
 
 	@PostMapping(value = "/processRawSomeFeedData")
@@ -145,4 +129,5 @@ public class DataProcessingController {
 			HttpServletResponse response) {
 		return Collections.singletonMap("Response", "Fallback Response");
 	}
+	
 }
