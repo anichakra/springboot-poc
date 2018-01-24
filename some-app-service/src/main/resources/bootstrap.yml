@@ -36,6 +36,7 @@ hystrix:
  
 server:  
   port: 8180
+
 security:
   user:
     name: root
