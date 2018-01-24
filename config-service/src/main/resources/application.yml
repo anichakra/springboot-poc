@@ -25,7 +25,6 @@ spring:
           password: '{cipher}AQBv4+Sigz1ghyqbyvf3XQpcqDK3Ff0J7w5kqJUlbxNrvkfUM5Ot+6qQviFl+Z/qBkUKAcMUpR8iLdJWhQrcutbEjGwOZH07ifsqogwTbkWb1Q7GSPLyCuBfLtXJWxgddcztc1x4c7w4xQQVhP1dcIJ5ZJUezMJUaGzLnqpHMxfoGReEkP65f1YZMzZeA79VTleM7MnfX9nF5e4Y/AtiI6f3Vksobxy90ZeSlG+b7FXG+I9zoGk+r7UTD7oRTJdxo+s/UiZbR2TyMiyEjzZn9G58Lih5+/nnI9rR72GvSi1PVZmD54woJvG/heSpcDFGPrxTV6XwGbpuBBZy0nJn4i8niJ9nF+nc7xFVZ5pEsPCVxyFEyqZDil30ckh8VKeBAf4='
           defaultLabel: master
           cloneOnStart: true
-          searchPaths: configuration
     bus:
       enabled: true
     stream:
