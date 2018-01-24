@@ -2,10 +2,10 @@ package com.anycompany.someapp.kafka.listner;
 
 import static java.util.stream.StreamSupport.stream;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Spliterator;
@@ -18,19 +18,23 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+import com.anycompany.someapp.s3.S3Actions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class KafkaConsumerListner {
+	
+	@Autowired
+	private S3Actions action;
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
-	@KafkaListener(topics = "filePath", group = "group-someFeed")
-	public void kafkaListner(String filePath) {
+	@KafkaListener(topics = "fileName", group = "group-someFeed")
+	public void kafkaListner(String fileName) {
 		try {
-			split(Paths.get(filePath), 100).forEach(this::sendRequest);
+			split(action.getFileFromS3(fileName), 100).forEach(this::sendRequest);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -47,9 +51,9 @@ public class KafkaConsumerListner {
 		kafkaTemplate.send("chunk", s);
 	}
 
-	Stream<List<String>> split(Path path, int limit) throws IOException {
+	Stream<List<String>> split(InputStream input, int limit) throws IOException {
 		// skip the remaining lines if its size < limit
-		return split(Files.lines(path), limit, false);
+		return split(new BufferedReader(new InputStreamReader(input)).lines().skip(1), limit, false);
 	}
 
 	<T> Stream<List<T>> split(Stream<T> source, int limit, boolean skipRemainingElements) {
