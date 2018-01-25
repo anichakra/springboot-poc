@@ -19,7 +19,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 public class KafkaConsumerConfig {
 
 	@Value("kafka-host")
-	private String kafkaHost;
+	private String kafkaHost; 
 
 	@Bean
 	@ConditionalOnMissingBean(ConsumerFactory.class)
