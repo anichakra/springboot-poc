@@ -41,6 +41,7 @@ services:
      - kafka
      - zookeeper
      - discovery-service
+    command: ["./wait-for-it.sh", "discovery-service:8761", "--timeout=0"]   
     environment:
       GIT_URI: https://github.com/anichakra/springboot-poc
       DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka     
