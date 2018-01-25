@@ -16,7 +16,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 @Configuration
 @EnableKafka
 public class KafkaConsumerConfig {
-
+ 
 	@Bean
 	@ConditionalOnMissingBean(ConsumerFactory.class)
 	public ConsumerFactory<Object, Object> consumerFactory() {
