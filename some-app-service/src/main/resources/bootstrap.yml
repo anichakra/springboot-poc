@@ -24,18 +24,18 @@ spring:
           brokers: kafka
           zkNodes: zookeeper
   kafka:
-    bootstrap-servers: kafka:9092
+    bootstrap-servers: ${KAFKA_HOSTNAME}:9092
   cloud:
     config:
-      uri: http://ec2-34-236-84-53.compute-1.amazonaws.com:8888
+      uri: ${CONFIG_SERVICE_URL}
       username: root
       password: s3cr3t
       fail-fast: true
     stream:
       kafka:
         binder:
-          brokers: kafka
-          zkNodes: zookeeper   
+          brokers: ${KAFKA_HOSTNAME}
+          zkNodes: ${ZOOKEEPER_HOSTNAME}   
 hystrix:
   command:
     default:
@@ -43,11 +43,6 @@ hystrix:
         timeout:
           enabled: false
 
-
-security:
-  user:
-    name: root
-    password: s3cr3t
 
 eureka:  
   client:

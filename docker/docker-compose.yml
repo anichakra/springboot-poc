@@ -18,7 +18,15 @@ services:
     image: anichakra/discovery-service
     ports:
      - "8761:8761"
-  
+     
+  gateway-service:
+    image: anichakra/gateway-service
+    depends_on:
+     - discovery-service
+    command: ["./wait-for-it.sh", "discovery-service:8761", "--timeout=0"]  
+    ports:
+     - "8080:8080"
+    
   config-service:
     image: anichakra/config-service
     ports:
@@ -28,15 +36,10 @@ services:
      - zookeeper
     environment:
       GIT_URI: https://github.com/anichakra/springboot-poc
-      GIT_USERNAME: anichakra
-      
-  gateway-service:
-    image: anichakra/gateway-service
-    depends_on:
-     - discovery-service
-    command: ["./wait-for-it.sh", "discovery-service:8761", "--timeout=0"]  
-    ports:
-     - "8080:8080"
+      KAFKA_HOSTNAME: kafka
+      ZOOKEEPER_HOSTNAME: zookeeper
+ 
+     
   some-app-service:
     image: anichakra/some-app-service
     ports:
@@ -46,9 +49,14 @@ services:
      - discovery-service
      - kafka
      - zookeeper
+    depends_on:
+     - discovery-service
+     - gateway-service
+     - config-service
+    command: ["./wait-for-it.sh", "config-service:8761", "--timeout=0"]   
     environment:
       POSTGRES_URL: jdbc:postgresql://ec2-35-168-228-160.compute-1.amazonaws.com:5432/postgres
-      POSTGRES_USERNAME: postgres
-     # POSTGRES_PASSWORD: "{cipher}aa"
       DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
       CONFIG_SERVICE_URL: http://config-service:8888
+      KAFKA_HOSTNAME: kafka
+      ZOOKEEPER_HOSTNAME: zookeeper
