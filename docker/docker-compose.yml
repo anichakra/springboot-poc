@@ -23,19 +23,27 @@ services:
     image: anichakra/gateway-service
     depends_on:
      - discovery-service
+    links:
+     - discovery-service 
     command: ["./wait-for-it.sh", "discovery-service:8761", "--timeout=0"]  
     ports:
      - "8080:8080"
+    environment:
+      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka
     
   config-service:
     image: anichakra/config-service
+    depends_on:
+     - discovery-service     
     ports:
      - "8888:8888"
     links:
      - kafka
      - zookeeper
+     - discovery-service
     environment:
       GIT_URI: https://github.com/anichakra/springboot-poc
+      DISCOVERY_SERVICE_URL: http://discovery-service:8761/eureka     
       KAFKA_HOSTNAME: kafka
       ZOOKEEPER_HOSTNAME: zookeeper
  

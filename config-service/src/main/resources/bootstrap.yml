@@ -34,3 +34,9 @@ spring:
           zkNodes: ${ZOOKEEPER_HOSTNAME}
   kafka:
     bootstrap-servers: ${KAFKA_HOSTNAME}:9092
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVICE_URL}
+    registerWithEureka: true   

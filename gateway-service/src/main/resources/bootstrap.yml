@@ -30,13 +30,13 @@ zuul:
       serviceId: kafka-producer
     dataprocessing:
       path: /some-app-service/**
-      serviceId: some-app-service 
+      serviceId: some-app-service
 
 eureka:
   client:
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVICE_URL}
-    registerWithEureka: false
+    registerWithEureka: true
 
 
 logging:
