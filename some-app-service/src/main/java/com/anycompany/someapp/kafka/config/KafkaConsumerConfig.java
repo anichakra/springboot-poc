@@ -25,7 +25,7 @@ public class KafkaConsumerConfig {
 	@ConditionalOnMissingBean(ConsumerFactory.class)
 	public ConsumerFactory<Object, Object> consumerFactory() {
 		Map<String, Object> consumerConfigProperties = new HashMap<>();
-		//consumerConfigProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHost);
+		consumerConfigProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHost);
 		consumerConfigProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "group-someFeed");
 		consumerConfigProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		consumerConfigProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
