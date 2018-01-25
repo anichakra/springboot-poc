@@ -33,4 +33,4 @@ spring:
           brokers: ${KAFKA_HOSTNAME}
           zkNodes: ${ZOOKEEPER_HOSTNAME}
   kafka:
-    bootstrap-servers: ${ZOOKEEPER_HOSTNAME}:9092
+    bootstrap-servers: ${KAFKA_HOSTNAME}:9092
