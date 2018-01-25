@@ -1,5 +1,6 @@
 # springboot-poc
 This contains a microservice demo with springboot and docker..
+http://ec2-34-236-84-53.compute-1.amazonaws.com:8180
 
 # Spring Config URL : https://github.com/jass0108/configuration
 
