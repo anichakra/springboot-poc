@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,14 +17,11 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 @EnableKafka
 public class KafkaConsumerConfig {
 
-	@Value("kafka-host")
-	private String kafkaHost; 
-
 	@Bean
 	@ConditionalOnMissingBean(ConsumerFactory.class)
 	public ConsumerFactory<Object, Object> consumerFactory() {
 		Map<String, Object> consumerConfigProperties = new HashMap<>();
-		consumerConfigProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHost);
+		consumerConfigProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
 		consumerConfigProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "group-someFeed");
 		consumerConfigProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		consumerConfigProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
