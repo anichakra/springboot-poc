@@ -12,6 +12,7 @@
 		<module>gateway-service</module>
 		<module>config-service</module>
 		<module>some-app-service</module>
+		<module>some-async-service</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
