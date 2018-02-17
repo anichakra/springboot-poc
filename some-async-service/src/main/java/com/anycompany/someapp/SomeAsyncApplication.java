@@ -14,6 +14,9 @@ import org.springframework.cloud.sleuth.zipkin2.ZipkinRestTemplateCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.client.RestTemplate;
 
 import com.amazonaws.auth.AWSCredentials;
@@ -29,11 +32,12 @@ import zipkin2.reporter.Sender;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @RefreshScope
+@EnableAsync
 @ComponentScan("com.anycompany")
-public class SomeApplication {
+public class SomeAsyncApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SomeApplication.class, args);
+		SpringApplication.run(SomeAsyncApplication.class, args);
 	}
 
 	@Configuration
@@ -72,4 +76,15 @@ public class SomeApplication {
 				.withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion("us-east-1").build();
 		return s3Client;
 	}
+
+	@Bean("asyncExecutor")
+	public TaskExecutor taskExecuter() {
+		ThreadPoolTaskExecutor task = new ThreadPoolTaskExecutor();
+		task.setCorePoolSize(10);
+		task.setMaxPoolSize(10);
+		task.setQueueCapacity(5);
+		task.afterPropertiesSet();
+		return task;
+	}
+	
 }

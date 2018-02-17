@@ -31,6 +31,9 @@ zuul:
     dataprocessing:
       path: /some-app-service/**
       serviceId: some-app-service
+    asyncprocessing:
+      path: /some-async-service/**
+      serviceId: some-async-service 
 
 eureka:
   client:
