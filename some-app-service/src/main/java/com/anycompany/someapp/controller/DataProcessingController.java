@@ -32,9 +32,13 @@ public class DataProcessingController {
 	@Autowired
 	@Qualifier("someFeedServiceImpl")
 	private SomeFeedService service;
+	
+	@Autowired
+	@Qualifier("someFeedKafkaServiceImpl")
+	private SomeFeedService serviceKafka;
 
-	@PostMapping(value = "/uploadFile")
-	@ApiOperation(value = "Upload single file using Spring Controller")
+	@PostMapping(value = "/uploadFileSequential")
+	@ApiOperation(value = "Upload single file using Spring Controller With Task Executor")
 	@ResponseBody
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success Response"),
 			@ApiResponse(code = 500, message = "File not uploaded") })
@@ -45,6 +49,18 @@ public class DataProcessingController {
 		return service.uploadFileHandler(file, serviceType);
 	}
 
+	@PostMapping(value = "/uploadFileParallel")
+	@ApiOperation(value = "Upload single file using Spring Controller with Kafka")
+	@ResponseBody
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success Response"),
+			@ApiResponse(code = 500, message = "File not uploaded") })
+	@HystrixCommand(fallbackMethod = "uploadFallback")
+	public Map<String, String> uploadFileHandlerParallel(@RequestParam("file") MultipartFile file,
+			@RequestParam("serviceType") String serviceType, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		return serviceKafka.uploadFileHandler(file, serviceType);
+	}
+	
 	@PostMapping(value = "/processRawSomeFeedData")
 	@ApiOperation(value = "Read Some Feed raw data and send it as JSON response")
 	@ResponseBody

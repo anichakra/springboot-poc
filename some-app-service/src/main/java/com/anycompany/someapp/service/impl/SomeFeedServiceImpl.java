@@ -66,7 +66,7 @@ public class SomeFeedServiceImpl implements SomeFeedService {
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<SomeFeed> modelInput = objectMapper.readValue(jsonData, new TypeReference<List<SomeFeed>>() {
 		});
-		//processData(modelInput);
+		processData(modelInput);
 		return "success";
 	}
 
