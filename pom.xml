@@ -11,19 +11,19 @@
 		<module>discovery-service</module>
 		<module>gateway-service</module>
 		<module>config-service</module>
-		<module>some-app-service</module>
-		<module>some-async-service</module>
+		<module>auth-service</module>
+		<module>some-data-service</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.9.RELEASE</version>
+		<version>1.5.12.RELEASE</version>
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<springboot.version>1.5.9.RELEASE</springboot.version>
+		<springboot.version>1.5.12.RELEASE</springboot.version>
 		<swagger-version>2.6.1</swagger-version>
 		<docker.image.prefix>anichakra</docker.image.prefix>
 	</properties>
@@ -31,24 +31,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>io.spring.platform</groupId>
-				<artifactId>platform-bom</artifactId>
-				<version>Brussels-SR6</version>
-				<type>pom</type>
-				<scope>import</scope>
+				  <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>Brussels-SR9</version>
+                <type>pom</type>
+                <scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${springboot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Edgware.SR1</version>
+				<version>Edgware.SR3</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

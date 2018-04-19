@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: auth-service
+server:  
+  port: 8081
+ # context-path: /auth-service
+  ssl:
+    enabled: true
+    key-store: classpath:eapi-ssl.jks
+    key-store-password: 3@p1-s$L
+    key-password: 3@p1-s$L
+    key-alias: eapi-ssl
+
+security:
+  require-ssl: true
+  
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVICE_URL:https://localhost:8761/eureka}
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  

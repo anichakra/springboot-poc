@@ -1,12 +1,18 @@
 server:
-  port: 8080
+  port: 8888
+  ssl:
+    enabled: true
+    key-store: classpath:eapi-ssl.jks
+    key-store-password: 3@p1-s$L
+    key-password: 3@p1-s$L
+    key-alias: eapi-ssl
+
+security:
+  require-ssl: true
 
 spring:
   application:
     name: gateway-service
-
-info:
-  component: Edge Server
   
 endpoints:
   restart:
@@ -19,29 +25,21 @@ endpoints:
 zuul:
   prefix: /api
   routes:
-    somefeed: 
-      path: /somefeed/**
-      serviceId: somefeed
-    fileprocessing: 
-      path: /file-processing/**
-      serviceId: file-processing
-    kafkaproducer: 
-      path: /kafka-producer/**
-      serviceId: kafka-producer
-    dataprocessing:
-      path: /some-app-service/**
-      serviceId: some-app-service
-    asyncprocessing:
-      path: /some-async-service/**
-      serviceId: some-async-service 
-
+    data-service:
+      path: /some-data-service/**
+      serviceId: some-data-service
+    auth-service:
+      path: /auth-service/**
+      serviceId: auth-service
+ribbon:
+  IsSecure: true
+  
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${DISCOVERY_SERVICE_URL}
     registerWithEureka: true
-
-
+    serviceUrl:
+     defaultZone: https://localhost:8761/eureka
+     
 logging:
   level:
     ROOT: INFO

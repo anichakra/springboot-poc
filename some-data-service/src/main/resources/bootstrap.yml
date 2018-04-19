@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: some-data-service
+    
+server:  
+  port: 8082
+  ssl:
+    enabled: true
+    key-store: classpath:eapi-ssl.jks
+    key-store-password: 3@p1-s$L
+    key-password: 3@p1-s$L
+    key-alias: eapi-ssl
+
+security:
+  require-ssl: true
+
+management:
+  security:
+    enabled: false
+
+  logging:
+    pattern:
+      console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+    level:
+      org.springframework: WARN
+      org.hibernate: WARN
+    bus:
+        enabled: false
+
+
+  cloud:
+    config:
+      uri: ${CONFIG_SERVICE_URL:http://localhost:8888}
+      username: root
+      password: s3cr3t
+      fail-fast: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+
+
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVICE_URL:https://localhost:8761/eureka}
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true
+    

@@ -1,7 +1,28 @@
-server:
+spring:
+  cloud:
+    config:
+      allow-override: true
+      fail-fast: true
+      server: 
+        git:
+          uri: ${GIT_URI:https://github.com/anichakra/springboot-poc}
+          username: anichakra
+          password: '{cipher}AQBv4+Sigz1ghyqbyvf3XQpcqDK3Ff0J7w5kqJUlbxNrvkfUM5Ot+6qQviFl+Z/qBkUKAcMUpR8iLdJWhQrcutbEjGwOZH07ifsqogwTbkWb1Q7GSPLyCuBfLtXJWxgddcztc1x4c7w4xQQVhP1dcIJ5ZJUezMJUaGzLnqpHMxfoGReEkP65f1YZMzZeA79VTleM7MnfX9nF5e4Y/AtiI6f3Vksobxy90ZeSlG+b7FXG+I9zoGk+r7UTD7oRTJdxo+s/UiZbR2TyMiyEjzZn9G58Lih5+/nnI9rR72GvSi1PVZmD54woJvG/heSpcDFGPrxTV6XwGbpuBBZy0nJn4i8niJ9nF+nc7xFVZ5pEsPCVxyFEyqZDil30ckh8VKeBAf4='
+          defaultLabel: master
+          cloneOnStart: true
+    bus:
+      enabled: false    
+server:  
   port: 8888
+  ssl:
+    enabled: true
+    key-store: classpath:eapi-ssl.jks
+    key-store-password: 3@p1-s$L
+    key-password: 3@p1-s$L
+    key-alias: eapi-ssl
 
 security:
+  require-ssl: true
   user:
     name: root
     password: s3cr3t
@@ -13,30 +34,8 @@ encrypt:
     alias: springboot-poc-key
     secret: changeme
 
-spring:
-  cloud:
-    config:
-      allow-override: true
-      fail-fast: true
-      server: 
-        git:
-          uri: ${GIT_URI}
-          username: anichakra
-          password: '{cipher}AQBv4+Sigz1ghyqbyvf3XQpcqDK3Ff0J7w5kqJUlbxNrvkfUM5Ot+6qQviFl+Z/qBkUKAcMUpR8iLdJWhQrcutbEjGwOZH07ifsqogwTbkWb1Q7GSPLyCuBfLtXJWxgddcztc1x4c7w4xQQVhP1dcIJ5ZJUezMJUaGzLnqpHMxfoGReEkP65f1YZMzZeA79VTleM7MnfX9nF5e4Y/AtiI6f3Vksobxy90ZeSlG+b7FXG+I9zoGk+r7UTD7oRTJdxo+s/UiZbR2TyMiyEjzZn9G58Lih5+/nnI9rR72GvSi1PVZmD54woJvG/heSpcDFGPrxTV6XwGbpuBBZy0nJn4i8niJ9nF+nc7xFVZ5pEsPCVxyFEyqZDil30ckh8VKeBAf4='
-          defaultLabel: master
-          cloneOnStart: true
-    bus:
-      enabled: true
-    stream:
-      kafka:
-        binder:
-          brokers: ${KAFKA_HOSTNAME}
-          zkNodes: ${ZOOKEEPER_HOSTNAME}
-  kafka:
-    bootstrap-servers: ${KAFKA_HOSTNAME}:9092
-
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${DISCOVERY_SERVICE_URL}
+      defaultZone: ${DISCOVERY_SERVICE_URL:https://localhost:8761/eureka}
     registerWithEureka: true   
