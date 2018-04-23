@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: config-service
   cloud:
     config:
       allow-override: true
@@ -7,11 +9,12 @@ spring:
         git:
           uri: ${GIT_URI:https://github.com/anichakra/springboot-poc}
           username: anichakra
-          password: '{cipher}AQBv4+Sigz1ghyqbyvf3XQpcqDK3Ff0J7w5kqJUlbxNrvkfUM5Ot+6qQviFl+Z/qBkUKAcMUpR8iLdJWhQrcutbEjGwOZH07ifsqogwTbkWb1Q7GSPLyCuBfLtXJWxgddcztc1x4c7w4xQQVhP1dcIJ5ZJUezMJUaGzLnqpHMxfoGReEkP65f1YZMzZeA79VTleM7MnfX9nF5e4Y/AtiI6f3Vksobxy90ZeSlG+b7FXG+I9zoGk+r7UTD7oRTJdxo+s/UiZbR2TyMiyEjzZn9G58Lih5+/nnI9rR72GvSi1PVZmD54woJvG/heSpcDFGPrxTV6XwGbpuBBZy0nJn4i8niJ9nF+nc7xFVZ5pEsPCVxyFEyqZDil30ckh8VKeBAf4='
+          password: '{cipher}AQAwB21afoKEPZpBNY3crJdmU3b3WQ8Xlk6cIA1JfQ0AXxpq92Pv/6N0h29FnP4VDckDJUsXoWGN//PklX6SG5xJBjrF2sXpA4vBIl8Fg7pRkLFkwCP7+HIDDRym7D+QFDxrrXtGoKG3nldfMLapE3ICn7JDlBl71W3RSPlHsXWuMGXpl9jZjgKWAzFBlYC2ttQzJwZNnCMY7NQyguZXNulTT0n64jghZU6jfxL7ZnqlaeaLFirWRnJs9vK2CbHX73uvDdcqLVTbgktiS9WM/oJYJKfKoJPUIlxRkrS3MK/RqCOo1QyDaCgIM3JiofU/9upBpv0BmXOFcJt1p8NztUSFnFmjC7pxSHuHOq/xOigvGLMFxm5+Ku+C897soTh7BFA='
           defaultLabel: master
           cloneOnStart: true
     bus:
       enabled: false    
+   
 server:  
   port: 8888
   ssl:
@@ -23,10 +26,12 @@ server:
 
 security:
   require-ssl: true
+  basic:
+    enabled: false
   user:
     name: root
     password: s3cr3t
-
+    
 encrypt:
   keyStore:
     location: classpath:/server.jks
@@ -35,7 +40,11 @@ encrypt:
     secret: changeme
 
 eureka:
+  #instance:
+    #metadataMap:
+     # user: root
+      #password: s3cr3t
   client:
     serviceUrl:
       defaultZone: ${DISCOVERY_SERVICE_URL:https://localhost:8761/eureka}
-    registerWithEureka: true   
+    registerWithEureka: true

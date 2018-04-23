@@ -12,6 +12,7 @@
 		<module>gateway-service</module>
 		<module>config-service</module>
 		<module>auth-service</module>
+		<module>vehicle-service</module>
 		<module>some-data-service</module>
 	</modules>
 	<parent>
@@ -31,11 +32,11 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				  <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>Brussels-SR9</version>
-                <type>pom</type>
-                <scope>import</scope>
+				<groupId>io.spring.platform</groupId>
+				<artifactId>platform-bom</artifactId>
+				<version>Brussels-SR9</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -75,6 +76,11 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-rsa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

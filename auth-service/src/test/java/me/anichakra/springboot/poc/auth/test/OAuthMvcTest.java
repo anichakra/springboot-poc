@@ -1,4 +1,4 @@
-package org.baeldung.test;
+package me.anichakra.springboot.poc.auth.test;
 
 import static org.hamcrest.Matchers.is;
 

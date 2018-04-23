@@ -1,7 +1,16 @@
 spring:
   application:
     name: some-data-service
-    
+  cloud:
+    config:
+      allow-override: true
+      fail-fast: true
+      username: root
+      password: s3cr3t
+      discovery:
+        enabled: true
+        service-id: config-service  
+      
 server:  
   port: 8082
   ssl:
@@ -26,14 +35,6 @@ management:
       org.hibernate: WARN
     bus:
         enabled: false
-
-
-  cloud:
-    config:
-      uri: ${CONFIG_SERVICE_URL:http://localhost:8888}
-      username: root
-      password: s3cr3t
-      fail-fast: true
 
 hystrix:
   command:
