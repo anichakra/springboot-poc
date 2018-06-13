@@ -6,10 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import me.anichakra.springboot.poc.auth.service.AuthorizationServerApplication;
+import me.anichakra.springboot.poc.auth.service.AuthServerApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AuthorizationServerApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = AuthServerApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class AuthServerIntegrationTest {
 
     @Test
