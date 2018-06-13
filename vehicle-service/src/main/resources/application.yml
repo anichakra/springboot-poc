@@ -1,18 +1,33 @@
 spring:
   application:
     name: vehicle-service
-
+  h2: 
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost/postgres
+    username: postgres
+    password: postgres123
+    driver-class-name: org.postgresql.Driver
+    
+security:
+  require-ssl: true
+  
 server:  
-  port: 8090
+  port: ${PORT:8080}
   ssl:
     enabled: true
     key-store: classpath:eapi-ssl.jks
     key-store-password: 3@p1-s$L
     key-password: 3@p1-s$L
     key-alias: eapi-ssl
-
-security:
-  require-ssl: true
 
 eureka:
   client:
@@ -21,3 +36,4 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
+

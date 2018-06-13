@@ -13,38 +13,11 @@ spring:
           defaultLabel: master
           cloneOnStart: true
     bus:
-      enabled: false    
-   
-server:  
-  port: 8888
-  ssl:
-    enabled: true
-    key-store: classpath:eapi-ssl.jks
-    key-store-password: 3@p1-s$L
-    key-password: 3@p1-s$L
-    key-alias: eapi-ssl
-
-security:
-  require-ssl: true
-  basic:
-    enabled: false
-  user:
-    name: root
-    password: s3cr3t
-    
+      enabled: false
+      
 encrypt:
   keyStore:
     location: classpath:/server.jks
     password: s3cr3t
     alias: springboot-poc-key
     secret: changeme
-
-eureka:
-  #instance:
-    #metadataMap:
-     # user: root
-      #password: s3cr3t
-  client:
-    serviceUrl:
-      defaultZone: ${DISCOVERY_SERVICE_URL:https://localhost:8761/eureka}
-    registerWithEureka: true
