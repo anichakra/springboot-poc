@@ -1,4 +1,4 @@
-package com.anycompany.gatewayservice;
+package me.anichakra.poc.springboot.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

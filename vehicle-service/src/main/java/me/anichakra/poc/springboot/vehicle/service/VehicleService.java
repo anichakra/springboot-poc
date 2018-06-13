@@ -1,8 +1,8 @@
-package me.anichakra.poc.random.rest.service;
+package me.anichakra.poc.springboot.vehicle.service;
 
 import java.util.List;
 
-import me.anichakra.poc.random.rest.domain.Vehicle;
+import me.anichakra.poc.springboot.vehicle.domain.Vehicle;
 
 /**
  * This is the vehicle service
@@ -11,7 +11,7 @@ import me.anichakra.poc.random.rest.domain.Vehicle;
  */
 public interface VehicleService {
 
-	void saveVehicle(Vehicle vehicle);
+	Vehicle saveVehicle(Vehicle vehicle);
 	
 	Vehicle getVehicle(Long id);
 	

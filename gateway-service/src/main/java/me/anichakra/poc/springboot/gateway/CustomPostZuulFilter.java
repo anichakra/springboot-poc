@@ -1,4 +1,4 @@
-package com.anycompany.gatewayservice;
+package me.anichakra.poc.springboot.gateway;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.anycompany.gatewayservice;
+package me.anichakra.poc.springboot.gateway;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package me.anichakra.poc.random.rest.domain;
+package me.anichakra.poc.springboot.vehicle.domain;
 
 import java.io.Serializable;
 

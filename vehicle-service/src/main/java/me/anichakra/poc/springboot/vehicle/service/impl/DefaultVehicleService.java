@@ -1,13 +1,13 @@
-package me.anichakra.poc.random.rest.service.impl;
+package me.anichakra.poc.springboot.vehicle.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.anichakra.poc.random.rest.domain.Vehicle;
-import me.anichakra.poc.random.rest.repo.VehicleRepository;
-import me.anichakra.poc.random.rest.service.VehicleService;
+import me.anichakra.poc.springboot.vehicle.domain.Vehicle;
+import me.anichakra.poc.springboot.vehicle.repo.VehicleRepository;
+import me.anichakra.poc.springboot.vehicle.service.VehicleService;
 
 @Service("default")
 public class DefaultVehicleService implements VehicleService {
@@ -16,8 +16,8 @@ public class DefaultVehicleService implements VehicleService {
 	private VehicleRepository vehicleRepository;
 
 	@Override
-	public void saveVehicle(Vehicle vehicle) {
-		vehicleRepository.saveAndFlush(vehicle);
+	public Vehicle saveVehicle(Vehicle vehicle) {
+		return vehicleRepository.saveAndFlush(vehicle);
 	}
 
 	@Override
