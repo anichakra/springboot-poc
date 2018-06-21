@@ -1,19 +1,35 @@
-amazon:
-  bucketName: spring-poc
-  accessKey: '{cipher}AQA6suULMlVGIHMHIq+7feK4wtOzSj6zx3osjUETm3Xt+ZUe9NPqgpyHpYaMkrQ0CUD3ORhc4l/ROOrpJIUrLiUgUxcDCYRMIAGS5gOw3srDQWryhHWRXGp3ZyEoQ/QhrI9tEWca78HAJeGkDIJfr1ezcEx2TrYSrf43alNOhrpRC9NMFbu1hl1pgdzGhlUwlk1sugkslk39nZ5TnI7MjTTuMYiSyPMc+lftp/iE8RrPLC7RoSdAYJCq18v5o/V7PUsdzqTrmVpeRhRLQtruHrD3JTDZpeFeEgTyXdouS4X5jFI84fJ8Ve/bGoC9sirM1OBeeXZCcsb85ZyVT4WQ6t0ty0thM3x8Ymd4tY5nihWsDFMMF35BOizlK4y0Z7bxM5ZvOBsZSVQX2l0v7LZQXW7u'
-  secretKey: '{cipher}AQAQ7QhEQjz4b9lNRxC4cTlz16jkunOLGNc52564dbwiYg53mg510F1DO4RtBrc0uOA23wnCrr2DgYjkj8D6nmlOChmW2VM5IWknQPAmeP56FRqJlIVKw/fSIYcv8DkjA3OvFEzWzedtI0FIU+HsjN6U75fVBE/Q0IyLRvlKUOkFl6fik7p641bJobjDzB/qvMuD524J7KNangtD0CgLcr1qY9VV8x9zlHZ+gfSK1k74zj8L8m0DnbnO3Cc9o2ecROv06IOIsvH/Bl07/OjjOZfrDNdRkywQPdhHDA2qwhFAwZH3CnLO+PKI2qA/7zcAyPQTsTW77iV5S/u2Gn0xh2jG2Diy62J2/sePNgRZnubnBAvkXo9bJthSaOUlM9XuUxDdmHFIsJr3vChtOM6wRG6RVmV523g1qAQ1lmFJbhefXA=='
-
-kafka-host: ${KAFKA_HOSTNAME}:9092
-
 spring:
   datasource:
-    url: ${POSTGRES_URL}
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}/postgres
     username: postgres
-    password: '{cipher}AQAk2nVn5QckLFl0gpqot+9htnwz9eOtGBSRH25AKAhtdYfDYtlBf9+w6vk5nBz9vG4r16InyL3mI/cF2P90QqIGYKs1n+n8TfEZ4JNxhfQCuc3xFdvseMuWaV1GF0NYGlvGxRE9IYSrtAJkkTVF3VlUSp12cHqqxt86nKfP3BmjHUjsX186FkBvSas5Rh3Z/UQucoiGd3923NAVWlLY+peSJMRdSCtLqqlCiZXVEDQOaef3Rtt9s2BiIy06rpRIwqEii3DjsaIX/L4pphMG0KCDCCCBEfWp/YswohczGRKSCLA/0IICEQUXOHGd+clCS6v2VWd8W17rrCq9o5AqwMzUYlqCW9c+A9L/4f0P9z+9SdQ6DcwdmTwjk3dH0B3mtac='
+    password: '{cipher}AQB80CozWtiw7J4LWgWlJjhK+kCAkkiIC4DSbKZA7fOROx+4ThNlSrlo97xTDOTM1Bl0kf/oePiSbPCcpN+qFOp6/yhTlNmB4eir+Mk8J8l8xiMYzhBSmStktppXkJtG8QVb+cYfdWDWwnUEV9wdFzlto8QPq3/SAmgNuUpXkzaGvZ7gKfJ+/1xlltX/AWTbo/92ZzcFI3d1Ai+8jcMbEP1d8h3NEsQ+/Ox8kV0Hco7LJrxhmEoxSJPJaw8AI4khxRxteO9MOCeU/mCDaRxnaekJ708ePprIstHFwF586nsO2Uscm8rYOTonQKPp6F+4he/E7AYLaBwwPk2QZ/epZbhOfL8oDIAN2HVD4QyGaKASP2rm5AdJVhPoALUOHzGeVpw='
     driver-class-name: org.postgresql.Driver
-    platform: postgres
   jpa:
-    database: POSTGRESQL
-    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  instance:
+    metadataMap:
+      user: root
+      password: s3cr3t
+  client:
+    registerWithEureka: true
+    serviceUrl:
+     defaultZone: https://${DISCOVERY_SERVICE_HOST:localhost}:8761/eureka
+    
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: true
+     
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG

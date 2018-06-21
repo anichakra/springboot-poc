@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+zuul:
+  prefix: /api
+  routes:
+    auth-service:
+      path: /auth-service/**
+      serviceId: auth-service
+    vehicle-service:
+      path: /vehicle-service/**
+      serviceId: vehicle-service
+
+
+  
