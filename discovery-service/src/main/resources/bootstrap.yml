@@ -1,3 +1,12 @@
-spring:
-  application:
-    name: discovery-service
+
+eureka:
+  instance:
+    hostname: ${DISCOVERY_SERVICE_HOST:localhost}
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+   
