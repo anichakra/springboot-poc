@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: discovery-service
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: file:///test.jks
+    key-store-password: somepassword
+    trust-store: file:///cacertpath
+    trust-store-password: somepassword
+    key-alias: somealias
+eureka:
+  instance:
+    hostname: localhost
+    securePort: ${server.port}
+    securePortEnabled: true
+    nonSecurePortEnabled: false
+    secureVirtualHostName: ${spring.application.name}
+    metadataMap:
+      hostname: ${eureka.instance.hostname}
+      securePort: ${server.port}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+security:
+  user:
+    name: someuser
+    password: somepassword

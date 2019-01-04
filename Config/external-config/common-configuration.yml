@@ -1,0 +1,19 @@
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: file:///test.jks
+    key-store-password: somepassword
+    trust-store: file:///cacertpath
+    trust-store-password: somepassword
+    key-alias: somealieas
+
+spring:
+  cloud:
+    config:
+      uri: https://localhost:8888
+      username: root
+      password: admin@123
+      
+ribbon:
+  IsSecure: true

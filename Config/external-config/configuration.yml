@@ -1,0 +1,28 @@
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: file:///test.jks
+    key-store-password: somepassword
+    trust-store: file:///cacertpath
+    trust-store-password: somepassword
+    key-alias: somealieas
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://configpath
+          default-label: branchname
+  application:
+    name: configuration
+security:
+  user:
+    name: root
+    password: admin@123
+encrypt:
+  keyStore:
+    location: file:///somejks.jks
+    password: pass
+    alias: alias
+    secret: somesecret
