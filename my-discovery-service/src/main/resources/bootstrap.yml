@@ -1,0 +1,14 @@
+server:
+  port: ${PORT:8761}
+  connection-timeout: 5000
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+spring:
+  application:
+    name: ${APPLICATION_NAME:discovery-service}

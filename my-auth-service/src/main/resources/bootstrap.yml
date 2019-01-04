@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:8199}
+  connection-timeout: 5000
+spring:
+  application:
+    name: my-auth-service
+  cloud:
+    config:
+      username: root
+      password: admin@123
+      uri: http://localhost:8888
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+version:
+  enable: false

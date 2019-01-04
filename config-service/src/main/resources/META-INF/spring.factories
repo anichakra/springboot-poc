@@ -1,3 +1,0 @@
-# Bootstrap components
-org.springframework.cloud.config.server.encryption.EncryptionController=\
-me.anichakra.poc.springboot.config.CustomEncryptionController	

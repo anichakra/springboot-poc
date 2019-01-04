@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:9411}
+  connection-timeout: 5000
+spring:
+  application:
+    name: tracing-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: root
+      password: admin@123   
+version:
+  enable: false

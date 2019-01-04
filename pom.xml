@@ -1,32 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>me.anichakra.poc.springboot</groupId>
-	<artifactId>springboot-poc</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-poc</name>
+	<groupId>me.anichakra.poc</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.0.1.SNAPSHOT</version>
+	<name>parent</name>
 	<packaging>pom</packaging>
-	<description>Spring Boot Parent POM</description>
-	<modules>
-		<module>discovery-service</module>
-		<module>gateway-service</module>
-		<module>config-service</module>
-		<module>auth-service</module>
-		<module>vehicle-service</module>
-		<module>some-data-service</module>
-	</modules>
+	<description>Parent POM</description>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.12.RELEASE</version>
 	</parent>
+
+	<modules>
+		<module>my-auth-service</module>
+		<module>my-user-service</module>
+		<module>my-config-service</module>
+		<module>my-discovery-service</module>
+		<module>my-tracing-service</module>
+		<module>my-gateway-service</module>
+	</modules>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<springboot.version>1.5.12.RELEASE</springboot.version>
 		<swagger-version>2.6.1</swagger-version>
-		<docker.image.prefix>anichakra</docker.image.prefix>
+		<apache-version>3.1</apache-version>
+		<common.version>0.0.1.SNAPSHOT</common.version>
 	</properties>
 
 	<dependencyManagement>
@@ -54,63 +58,54 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<dependencies>
-		<!-- Swagger Dependency : start -->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger-version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger-version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<!-- Swagger Dependency : end -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-common</artifactId>
+			<version>4.0.27.Final</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-rsa</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>		
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-
 			</plugin>
-			<!-- added for docker image build from the base-image -->
 			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>1.0.0</version>
-				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<baseImage>anichakra/springboot-poc:base</baseImage>
-					<entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar","/${project.build.finalName}.jar"]</entryPoint>
-					<!-- copy the service's jar file from target into the root directory 
-						of the image -->
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.0</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

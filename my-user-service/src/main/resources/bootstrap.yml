@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:8182}
+  connection-timeout: 5000
+spring:
+  application:
+    name: user-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: root
+      password: admin@123
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+notification:
+  values: test

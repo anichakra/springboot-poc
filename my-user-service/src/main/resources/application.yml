@@ -1,0 +1,5 @@
+custom:
+  context-path: /v@project.version@
+  application-name: userservice
+version:
+  enable: false
