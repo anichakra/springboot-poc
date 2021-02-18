@@ -24,7 +24,7 @@ If you need a simple distributed counter then opt for IAtomicLong. It handles al
 
 ### [ReliableMessagePublisher.java](src/main/java/com/jahnelgroup/queue/hazelcast/reliableQueue/ReliableMessagePublisher.java) and [ReliableMessageSubscriber](src/main/java/com/jahnelgroup/queue/hazelcast/reliableQueue/ReliableMessageSubscriber.java)
 
-Hazelcast makes it easy to share a distributed queue across nodes but it's important to realize that by default everything is entirely in-memory and subject to data loss upon failures. It's possible to make the queue durable by configuring a [QueueStore](http://docs.hazelcast.org/docs/latest/manual/html-single/index.html#queueing-with-persistent-datastore) and back the queue with a database or some durable source. 
+Hazelcast makes it easy to share a distributed queue across nodes but it's important to realize that by default everything is entirely in-memory and subject to data loss upon failures. It's possible to make the queue durable by configuring a [QueueStore](http://docs.hazelcast.org/docs/latest/manual/html-single/index.html#queueing-with-persistent-datastore) and back the queue with a database or some durable source. This is just a POC project
 
 This demo uses two types of Spring profiles to demo this functionaltiy, use the profile **publisher** to start a node that puts messages onto the queue and backs it with a database, and use the profile **subscriber** to consume the messages. Note that this is a **Queue** and not a Topic so if you start multiple subscriber's then one and only with receive each message. If you're for every node to receive the message then you need a Topic. 
 
