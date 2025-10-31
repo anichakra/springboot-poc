@@ -1,0 +1,14 @@
+{
+  "pipeline": "test",
+  "bootstrap-servers": [
+    "localhost:9092"
+  ],
+  "module-config": {
+    "module": "reid",
+    "label": "score",
+    "text-color": "yellow",
+    "box-color": "reid",
+    "box-thickness": 2,
+    "text-thickness": 2
+  }
+}

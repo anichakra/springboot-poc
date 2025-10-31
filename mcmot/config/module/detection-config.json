@@ -1,0 +1,15 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "model": "detection/model/yolov8n.pt",
+    "classes": ["person"],
+    "prediction": false
+  },
+  "frame-sync": {
+    "ignore-initial-delay": false,
+    "backlog-threshold": 3,
+    "backlog-check-interval": 1,
+    "type": "timestamp",
+    "retention-time": 300
+  }
+}

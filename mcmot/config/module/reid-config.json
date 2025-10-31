@@ -1,0 +1,15 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "device-type": "cpu",
+    "model": "reid/model/osnet_x1_0.pth"
+  },
+  "frame-sync": {
+    "ignore-initial-delay": false,
+    "backlog-threshold": 5,
+    "backlog-check-interval": 1,
+    "type": "timestamp",
+    "seek-to-end": true,
+    "retention-time": 300
+  }
+}

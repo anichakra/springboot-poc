@@ -1,0 +1,8 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "output": "./output",
+    "log-wait-time": 10,
+    "prompt": "Attached image containing combined images of multiple cameras. The images might contain annotation with boundary boxes that must be ignored. Provide detail insight from each camera. Insight of each camera must be in a separate sentence. Do not provide any repetitive information."
+  }
+}

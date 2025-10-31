@@ -1,0 +1,13 @@
+{
+  "bootstrap-servers":["localhost:9092"],
+  "pipeline": "test",
+  "module-config":{
+    "camera-id": "4",
+    "location": "terrace",
+    "format": "avi",
+    "compression":  "H.265",
+    "bitrate": "6Mbps",
+    "encoding": "HEVC"
+  },
+  "frame-sync": {}
+}

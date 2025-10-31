@@ -1,0 +1,37 @@
+version: 1
+disable_existing_loggers: false
+
+# Formatters for logs
+formatters:
+  standard:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  json:
+    format: '{"time": "%(asctime)s", "level": "%(levelname)s", "logger": "%(name)s", "message": "%(message)s"}'
+
+# Handlers to route logs (console, rotating file handlers, etc.)
+handlers:
+  # Console handler (useful for logs visible in the terminal)
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: json
+
+
+# Loggers to define component-specific log levels
+loggers:
+  application:
+    level: DEBUG
+    handlers: [console]
+    propagate: true
+  event:
+    level: DEBUG
+    handlers: [ console ]
+    propagate: true
+  sync:
+    level: DEBUG
+    handlers: [ console ]
+    propagate: true
+  torchreid:
+    level: ERROR
+    handlers: [ console ]
+    propagate: false

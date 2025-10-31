@@ -1,0 +1,25 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "max-iou-distance": 0.6,
+    "max-age": 5,
+    "nms-max-overlap": 1.0,
+    "match-detection": true,
+    "detection-score-threshold": 0.6,
+    "gating-only-position": true,
+    "ignore-capture": false,
+    "prediction-factor": 0.2,
+    "detection-module-name": "detection",
+    "only-confirmed-tracks": false
+  }
+  ,
+  "frame-sync": {
+    "ignore-initial-delay": false,
+    "backlog-threshold": 2,
+    "backlog-check-interval": 1,
+    "type": "timestamp",
+    "retention-time": 300,
+    "seek-to-end": true,
+    "enable-sequencing": false
+  }
+}

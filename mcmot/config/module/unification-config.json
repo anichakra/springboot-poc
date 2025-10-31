@@ -1,0 +1,15 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "output": "./output"
+  },
+  "frame-sync": {
+    "ignore-initial-delay": false,
+    "backlog-threshold": 5,
+    "backlog-check-interval": 1,
+    "type": "timestamp",
+    "retention-time": 1000,
+    "unify": true,
+    "enable-sequencing": false
+  }
+}

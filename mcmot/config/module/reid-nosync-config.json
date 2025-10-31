@@ -1,0 +1,7 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "device-type": "cpu",
+    "model": "reid/model/osnet_x1_0.pth"
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "capture",
+    "observability": true,
+    "config": {
+      "bootstrap-servers": [
+        "localhost:9092"
+      ],
+      "pipeline": "test",
+      "module-config": {
+        "camera-id": "1",
+        "location": "basketball",
+        "format": "avi"
+      },
+      "frame-sync": {}
+    }
+  },
+  {
+    "name": "capture",
+    "observability": true,
+    "config": {
+      "bootstrap-servers": [
+        "localhost:9092"
+      ],
+      "pipeline": "test",
+      "module-config": {
+        "camera-id": "2",
+        "location": "basketball",
+        "format": "avi"
+      },
+      "frame-sync": {}
+    }
+  },
+  {
+    "name": "detection",
+    "replication-factor": 1,
+    "observability": true,
+    "config": "config/module/detection-config.json"
+  },
+  {
+    "name": "reid",
+    "observability": true,
+    "replication-factor": 2,
+    "config": "config/module/reid-config.json"
+  },
+  {
+    "name": "tracker",
+    "observability": true,
+    "config": "config/module/tracker-config.json"
+  },
+  {
+    "name": "unification",
+    "observability": false,
+    "config": "config/module/unification-config.json"
+  },
+  {
+    "name": "analytics",
+    "observability": false,
+    "config": "config/module/analytics-config.json"
+  }
+
+]

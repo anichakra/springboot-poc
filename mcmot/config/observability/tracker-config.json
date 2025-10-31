@@ -1,0 +1,14 @@
+{
+  "pipeline": "test",
+  "bootstrap-servers": [
+    "localhost:9092"
+  ],
+  "module-config": {
+    "module": "tracker",
+    "label": "id",
+    "text-color": "yellow",
+    "box-color": "green",
+    "box-thickness": 2,
+    "text-thickness": 2
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "model": "detection/model/yolov8n.pt",
+    "classes": ["person"],
+    "prediction": false
+  }
+}

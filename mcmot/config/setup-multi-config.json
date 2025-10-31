@@ -1,0 +1,13 @@
+{
+  "pipeline": "test",
+  "bootstrap-servers": [
+    "localhost:9092"
+  ],
+  "topics": {
+    "capture": 1,
+    "detection": 2,
+    "reid": 1,
+    "tracker": 1,
+    "unification": 1
+  }
+}

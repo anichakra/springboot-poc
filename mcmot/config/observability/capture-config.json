@@ -1,0 +1,18 @@
+{
+  "pipeline": "test",
+  "bootstrap-servers": [
+    "localhost:9092"
+  ],
+  "module-config": {
+    "module": "capture",
+    "text-color": "yellow",
+    "text-thickness": 2
+  },
+  "frame-sync": {
+    "ignore-initial-delay": false,
+    "backlog-threshold": 5,
+    "backlog-check-interval": 1,
+    "type": "timestamp",
+    "retention-time": 300
+  }
+}

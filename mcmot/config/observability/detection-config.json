@@ -1,0 +1,14 @@
+{
+  "pipeline": "test",
+  "bootstrap-servers": [
+    "localhost:9092"
+  ],
+  "module-config": {
+    "module": "detection",
+    "label": "class",
+    "text-color": "yellow",
+    "box-color": "purple",
+    "box-thickness": 2,
+    "text-thickness": 2
+  }
+}

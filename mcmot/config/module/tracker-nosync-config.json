@@ -1,0 +1,15 @@
+{
+  "pipeline": "test",
+  "module-config": {
+    "max-iou-distance": 0.6,
+    "max-age": 10,
+    "nms-max-overlap": 1.0,
+    "match-detection": true,
+    "detection-score-threshold": 0.6,
+    "gating-only-position": true,
+    "ignore-capture": false,
+    "prediction-factor": 0.1,
+    "detection-module-name": "detection",
+    "only-confirmed-tracks": false
+  }
+}

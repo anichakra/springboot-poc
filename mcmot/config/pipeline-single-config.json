@@ -1,0 +1,68 @@
+[
+  {
+    "name": "capture",
+    "observability": true,
+    "config": {
+      "bootstrap-servers": [
+        "localhost:9092"
+      ],
+      "pipeline": "test",
+      "module-config": {
+        "camera-id": "1",
+        "location": "store",
+        "format": "mp4"
+      },
+      "frame-sync": {}
+    }
+  },
+  {
+    "name": "detection",
+    "replication-factor": 1,
+    "observability": true,
+    "config": {
+      "pipeline": "test",
+      "module-config": {
+        "model": "detection/model/yolov8n.pt",
+        "classes": [
+          "person"
+        ],
+        "prediction": false
+      },
+      "frame-sync": {
+        "ignore-initial-delay": false,
+        "backlog-threshold": 3,
+        "backlog-check-interval": 1,
+        "type": "timestamp",
+        "retention-time": 300
+      }
+    }
+  },
+  {
+    "name": "tracker",
+    "observability": true,
+    "config": {
+      "pipeline": "test",
+      "module-config": {
+        "max-iou-distance": 0.6,
+        "max-age": 10,
+        "nms-max-overlap": 1.0,
+        "match-detection": true,
+        "detection-score-threshold": 0.6,
+        "gating-only-position": true,
+        "ignore-capture": true,
+        "prediction-factor": 0.1,
+        "detection-module-name": "detection",
+        "only-confirmed-tracks": false
+      },
+      "frame-sync": {
+        "ignore-initial-delay": false,
+        "backlog-threshold": 10,
+        "backlog-check-interval": 1,
+        "type": "timestamp",
+        "retention-time": 300,
+        "seek-to-end": false,
+        "enable-sequencing": false
+      }
+    }
+  }
+]
